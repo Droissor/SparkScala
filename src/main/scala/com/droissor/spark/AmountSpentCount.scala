@@ -17,11 +17,11 @@ object AmountSpentCount {
 
     val customerToPriceSpent = input.map(extractCustomerToPriceSpent)
 
-    val customerTotalSpent = customerToPriceSpent.reduceByKey((firstPrice, secondPrice) => firstPrice + secondPrice)
+    val customerToTotalSpent = customerToPriceSpent.reduceByKey((firstPrice, secondPrice) => firstPrice + secondPrice)
 
-    val customerTotalSpentSortedDesc = customerTotalSpent.sortBy(_._2, ascending = false)
+    val customerToTotalSpentSortedByTotalSpentDesc = customerToTotalSpent.sortBy(_._2, ascending = false)
 
-    customerTotalSpentSortedDesc.collect().foreach(println)
+    customerToTotalSpentSortedByTotalSpentDesc.collect().foreach(println)
 
   }
 
