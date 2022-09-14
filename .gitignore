@@ -1,2 +1,14 @@
 *.class
 *.log
+/.idea
+/.settings
+/.bsp
+/target/
+/project/**/target/
+/test/macro-annot/target/
+/test/files/target/
+/test/target/
+/build-sbt/
+local.sbt
+jitwatch.out
+
