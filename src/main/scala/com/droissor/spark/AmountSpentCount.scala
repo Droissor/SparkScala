@@ -4,16 +4,16 @@ import org.apache.spark.SparkContext
 
 object AmountSpentCount {
 
-  val CUSTOMER_ID_FIELD_POSITION = 0
-  val PRICE_FIELD_POSITION = 2
-  val FILE_DELIMITER = ","
+  private val DATA_FILE_PATH = "data/customer-orders.csv"
+  private val CUSTOMER_ID_FIELD_POSITION = 0
+  private val PRICE_FIELD_POSITION = 2
+  private val FILE_DELIMITER = ","
 
   def main(args: Array[String]): Unit = {
-
     val sparkContext = new SparkContext("local[*]", "AmountSpentCount")
 
     /** Data Structure is : CustomerID, ItemID, Price */
-    val input = sparkContext.textFile("data/customer-orders.csv")
+    val input = sparkContext.textFile(DATA_FILE_PATH)
 
     val customerToPriceSpent = input.map(extractCustomerToPriceSpent)
 
@@ -25,7 +25,7 @@ object AmountSpentCount {
 
   }
 
-  def extractCustomerToPriceSpent(line: String): (Int, Float) = {
+  private def extractCustomerToPriceSpent(line: String): (Int, Float) = {
     val fields = line.split(FILE_DELIMITER)
     (fields(CUSTOMER_ID_FIELD_POSITION).toInt, fields(PRICE_FIELD_POSITION).toFloat)
   }
