@@ -2,7 +2,7 @@ package com.droissor.spark
 
 import org.apache.spark.SparkContext
 
-object AmountSpentCount {
+object TotalSpentByCustomerRDD {
 
   private val DATA_FILE_PATH = "data/customer-orders.csv"
   private val CUSTOMER_ID_FIELD_POSITION = 0
